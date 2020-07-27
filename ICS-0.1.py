@@ -157,6 +157,8 @@ def CreateToolTip(widget, text):
     widget.bind('<Enter>', enter)
     widget.bind('<Leave>', leave)
 
+    
+
 #%%Principal window
 root = Tk()
 root.title('Image Classification System v-0.1')
@@ -210,30 +212,6 @@ CreateToolTip(checkInputButton, text = 'User information')
 
 toolbar.pack(side=TOP, fill=X)
 
-
-
-# ventanaInicio_Menu = tkinter.Menu(root)
-# root.config(menu=ventanaInicio_Menu)
-
-# ventanaInicio_Menu_Opc1 = tkinter.Menu(ventanaInicio_Menu, bg=Fun_Rgb(C_Pal5), fg=Fun_Rgb(C_Black),
-#                              activebackground=Fun_Rgb(C_Pal4), activeforeground=Fun_Rgb(C_Black),
-#                              tearoff=0)                         
-# ventanaInicio_Menu.add_cascade(label="File", menu=ventanaInicio_Menu_Opc1)
-# ventanaInicio_Menu_Opc1.add_command(label='Open file', command=read_File) 
-# ventanaInicio_Menu_Opc1.add_command(label='Detect WPI port', command=Detect_WPI) 
-# ventanaInicio_Menu_Opc1.add_command(label='Stop WPI connection', command=close_WPI_Connection) 
-# ventanaInicio_Menu_Opc1.add_command(label='Check Inputs WPI-1', command=check_Input_1)
-# ventanaInicio_Menu_Opc1.add_command(label='Check Inputs WPI-2', command=check_Input_2)
-# ventanaInicio_Menu_Opc1.add_command(label='Check Inputs WPI-3', command=check_Input_3)
-# ventanaInicio_Menu_Opc1.add_command(label='Check Inputs WPI-4', command=check_Input_4)
-# ventanaInicio_Menu_Opc1.add_command(label='Check Inputs WPI-5', command=check_Input_5)
-# ventanaInicio_Menu_Opc1.add_command(label='Check Inputs WPI-6', command=check_Input_6)
-# ventanaInicio_Menu_Opc1.add_command(label='Stop check Inputs', command=stop_check_Input)
-# ventanaInicio_Menu_Opc1.add_command(label='License', command=Fun_Lincense)  
-# ventanaInicio_Menu_Opc1.add_command(label='Information', command=Fun_WTS) 
-# ventanaInicio_Menu_Opc1.add_command(label='Exit', command=exitApp)
-
-
 menubar = tkinter.Menu(root)
 root.config(menu=menubar)
 
@@ -241,7 +219,11 @@ Menu_Opc1 = tkinter.Menu(root, bg=Fun_Rgb(C_White), fg=Fun_Rgb(C_Primary),
                              activebackground=Fun_Rgb(C_White), activeforeground=Fun_Rgb(C_Primary),
                              tearoff=0)                         
 menubar.add_cascade(label="File", menu=Menu_Opc1)
-Menu_Opc1.add_command(label='Cut video') 
+Menu_Opc1.add_command(label='Cut video')#, command=close_WPI_Connection) 
+Menu_Opc1.add_command(label='Open project')
+Menu_Opc1.add_command(label='Save project')
+Menu_Opc1.add_command(label='Data analysis')
+Menu_Opc1.add_command(label='User information')
 Menu_Opc1.add_command(label='License')  
 
 
@@ -271,6 +253,73 @@ pesPrincipal = tkinter.Frame(notebook, background = Fun_Rgb(C_Primary))
 
 notebook.add(pesRename, text = 'Set variable names')
 notebook.add(pesPrincipal, text = 'Registrer')
+
+
+#%%Canvas to notebook rename
+canSubjects = Canvas(pesRename, width=int(width_monitor), height=int(aux_height_monitor*14), bg=Fun_Rgb(C_Primary))
+
+canSubjects.create_rectangle(int(aux_width_monitor*1.5), int(aux_height_monitor*1.5), int(aux_width_monitor*13.5), int(aux_width_monitor*2), fill=Fun_Rgb(C_Light_Dark), outline=Fun_Rgb(C_White), width=.1)
+canSubjects.create_rectangle(int(aux_width_monitor*1.5), int(aux_height_monitor*5), int(aux_width_monitor*13.5), int(aux_width_monitor*5), fill=Fun_Rgb(C_Light_Dark), outline=Fun_Rgb(C_White), width=.1)
+canSubjects.place(x=0,y=0) 
+
+
+#%%Labels and entries to notebook rename         
+lblSubjects = Label(canSubjects, text="Subjects", bg = Fun_Rgb(C_Primary), fg = Fun_Rgb(C_White))
+lblSubjects.config(font = (Font_1,15))
+lblSubjects.place(x=aux_width_monitor*1.5, y=aux_height_monitor*1)
+
+sub1 = StringVar()
+sub2 = StringVar()
+sub3 = StringVar()
+sub4 = StringVar()
+sub5 = StringVar()
+
+
+lblSubjects1 = Label(canSubjects, text="Subject 1", bg = Fun_Rgb(C_Light_Dark), fg = Fun_Rgb(C_White))
+lblSubjects1.config(font = (Font_1,12))
+lblSubjects1.place(x=aux_width_monitor*1.75, y=aux_height_monitor*2)
+
+entSub1 = Entry(pesRename, textvariable = sub1, bd =1)
+entSub1.place(x=aux_width_monitor*1.75, y=aux_height_monitor*2.5)
+
+lblSubjects2 = Label(canSubjects, text="Subject 2", bg = Fun_Rgb(C_Light_Dark), fg = Fun_Rgb(C_White))
+lblSubjects2.config(font = (Font_1,12))
+lblSubjects2.place(x=aux_width_monitor*4.25, y=aux_height_monitor*2)
+
+entSub2 = Entry(pesRename, textvariable = sub2, bd =1)
+entSub2.place(x=aux_width_monitor*4.25, y=aux_height_monitor*2.5)
+
+lblSubjects3 = Label(canSubjects, text="Subject 3", bg = Fun_Rgb(C_Light_Dark), fg = Fun_Rgb(C_White))
+lblSubjects3.config(font = (Font_1,12))
+lblSubjects3.place(x=aux_width_monitor*6.75, y=aux_height_monitor*2)
+
+entSub3 = Entry(pesRename, textvariable = sub3, bd =1)
+entSub3.place(x=aux_width_monitor*6.75, y=aux_height_monitor*2.5)
+
+lblSubjects4 = Label(canSubjects, text="Subject 4", bg = Fun_Rgb(C_Light_Dark), fg = Fun_Rgb(C_White))
+lblSubjects4.config(font = (Font_1,12))
+lblSubjects4.place(x=aux_width_monitor*9.25, y=aux_height_monitor*2)
+
+entSub4 = Entry(pesRename, textvariable = sub4, bd =1)
+entSub4.place(x=aux_width_monitor*9.25, y=aux_height_monitor*2.5)
+
+lblSubjects5 = Label(canSubjects, text="Subject 5", bg = Fun_Rgb(C_Light_Dark), fg = Fun_Rgb(C_White))
+lblSubjects5.config(font = (Font_1,12))
+lblSubjects5.place(x=aux_width_monitor*11.7, y=aux_height_monitor*2)
+
+entSub5 = Entry(pesRename, textvariable = sub5, bd =1)
+entSub5.place(x=aux_width_monitor*11.7, y=aux_height_monitor*2.5)
+
+
+
+lblBehaviors = Label(canSubjects, text="Behaviors", bg = Fun_Rgb(C_Primary), fg = Fun_Rgb(C_White))
+lblBehaviors.config(font = (Font_1,15))
+lblBehaviors.place(x=aux_width_monitor*1.5, y=aux_height_monitor*4.5)
+
+#%%Labels and buttons in pesPrincipal
+lblSubjects5 = Label(pesPrincipal, textvariable=sub1, bg = Fun_Rgb(C_Light_Dark), fg = Fun_Rgb(C_White))
+lblSubjects5.config(font = (Font_1,12))
+lblSubjects5.place(x=aux_width_monitor*11.7, y=aux_height_monitor*2)
 
 #%%Mainloop
 root.mainloop()
