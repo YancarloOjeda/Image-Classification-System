@@ -724,7 +724,7 @@ def saveProject():
         Archivo_Frames.write(str(beh10.get())+'\n')
         Archivo_Frames.close()  
         
-        messagebox.showinfo(message="Regestry has been saved", title="Save")
+        messagebox.showinfo(message="Project variables has been saved", title="Save")
 
 #%%Fun openProject
 def openProject():
